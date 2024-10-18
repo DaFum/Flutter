@@ -5,20 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Web-App Generator</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/material-darker.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/material-darker.min.css">  
   <style>
     :root {
-      --primary-color: #0071b2;
-      --secondary-color: #3c3c7d;
-      --background-color: #c7c7c7;
+      --primary-color: #4a76a8;
+      --secondary-color: #6c5ce7;
+      --background-color: #f0f2f5;
       --text-color: #333;
       --card-background: #ffffff;
       --input-background: #e0e0e0;
-      --button-hover: #0071b2c9;
+      --button-hover: #3b5f86;
       --transition: all 0.3s ease;
-      --input-focus: #00b4d8;
-      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     * {
@@ -28,36 +25,30 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: var(--background-color);
       color: var(--text-color);
       line-height: 1.6;
       transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
-      flex: 1;
     }
 
     header {
       background-color: var(--primary-color);
       color: white;
       padding: 20px 0;
-      display: flex;
-      box-shadow: var(--shadow);
-      justify-content: space-around;
-      align-items: center;
+      text-align: center;
+      position: relative;
     }
 
     h1 {
       margin-bottom: 10px;
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
 
     #restart-onboarding {
@@ -70,16 +61,11 @@
       border: none;
       color: white;
     }
-    
-    button#restart-onboarding {
-      display: flex;
-      justify-content: flex-end;
-    }
 
     .card {
       background-color: var(--card-background);
-      border-radius: 10px;
-      box-shadow: var(--shadow);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       padding: 20px;
       margin-bottom: 20px;
       transition: var(--transition);
@@ -87,7 +73,7 @@
 
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     }
 
     .input-group {
@@ -96,7 +82,7 @@
 
     label {
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
       font-weight: bold;
     }
 
@@ -104,9 +90,9 @@
     textarea,
     select {
       width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
       background-color: var(--input-background);
       font-size: 16px;
       transition: var(--transition);
@@ -212,7 +198,6 @@
       --text-color: #ffffff;
       --card-background: #2c2c2c;
       --input-background: #3a3a3a;
-      --shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     @keyframes fadeIn {
@@ -280,11 +265,11 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.worker.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/codemirror.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/mode/xml/xml.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/mode/javascript/javascript.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/mode/css/css.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/mode/htmlmixed/htmlmixed.min.js"></script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/mode/xml/xml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/mode/css/css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.7/mode/htmlmixed/htmlmixed.min.js"></script>  
   
 </head>
 <body>
@@ -341,7 +326,7 @@
     <section class="card fade-in">
       <button id="toggle-code-editor">Code Editor anzeigen/ausblenden</button>
       <div class="editor-preview">
-        <div id="code-editor-container" style="display: none;">
+        <div id="code-editor-container" style="display: block;">
           <textarea id="code-editor"></textarea>
         </div>
       </div>
@@ -370,14 +355,16 @@
   </div>
 
   <script>
-      
-    const apiKey = 'apikey';
+    var apiKey;
+    fetch('/api/getApiKey')
+      .then(response => response.json())
+      .then(data => {
+        apiKey = data.apiKey;
+      })
+      .catch(error => console.error('Error fetching API key:', error));
+    var apiUrl = 'https://api.together.xyz/v1/chat/completions';
 
-
-
-    const apiUrl = 'https://api.together.xyz/v1/chat/completions';
-
-    const templates = {
+    var templates = {
       "Kurs-Website": `<!DOCTYPE html>
 <html lang="de">
 <head>
@@ -395,7 +382,7 @@
 </head>
 <body>
   <header>
-    <h1>Mein Kurs</h1
+    <h1>Mein Kurs</h1>
   </header>
   <nav>
     <a href="#">Startseite</a>
@@ -428,7 +415,7 @@
 <body>
   <h1>Quiz</h1>
   <div id="quiz-container">
-    <div id="question">Was ist die Hauptstadt von Deutschland?</div>
+    <div id="question">Was ist  die Hauptstadt von Deutschland?</div>
     <label class="option"><input type="radio" name="option" value="Berlin"> Berlin</label>
     <label class="option"><input type="radio" name="option" value="München"> München</label>
     <label class="option"><input type="radio" name="option" value="Hamburg"> Hamburg</label>
@@ -438,9 +425,9 @@
 
   <script>
     document.getElementById("submit").addEventListener("click", function() {
-      const options = document.getElementsByName("option");
-      let selectedOption = '';
-      for (let i = 0; i < options.length; i++) {
+      var options = document.getElementsByName("option");
+      var selectedOption;
+      for (var i = 0; i < options.length; i++) {
         if (options[i].checked) {
           selectedOption = options[i].value;
         }
@@ -453,76 +440,95 @@
     });
   <\/script>
 </body>
-</html>`
+</html>`,
     };
 
-    const predefinedPrompts = {
+    var predefinedPrompts = {
       "Erstelle eine einfache ToDo-Liste": "Erstelle eine einfache ToDo-Liste mit der Möglichkeit, Aufgaben hinzuzufügen, abzuhaken und zu löschen.",
       "Erstelle eine Galerie mit Bildern und Beschreibungen": "Erstelle eine Bildergalerie, in der Bilder mit Beschreibungen angezeigt werden und durchgeklickt werden können.",
-      "Erstelle eine Kontaktformular-Seite mit Validierung": "Erstelle eine Kontaktseite mit einem Formular, das Felder für Name, E-Mail und Nachricht enthält. Füge Validierungen für die Eingabefelder hinzu."
+      "Erstelle eine Kontaktformular-Seite mit Validierung": "Erstelle eine Kontaktseite mit einem Formular, das Felder für Name, E-Mail und Nachricht enthält. Füge Validierungen für die Eingabefelder hinzu.",
     };
 
-    const codeEditor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
+    var codeEditor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
       mode: 'htmlmixed',
       theme: 'default',
       lineNumbers: true,
       lineWrapping: true
     });
 
-    document.getElementById('file-input').addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      const fileName = file.name;
-      document.getElementById('file-name').textContent = fileName;
-      const reader = new FileReader();
+    codeEditor.setValue(`<!DOCTYPE html>
+    <html lang="de">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Beispiel Web-App</title>
+    </head>
+    <body>
+      <h1>Willkommen zur Web-App Generator</h1>
+      <p>Hier wird Ihr generierter Code angezeigt.</p>
+    </body>
+    </html>`);
+    codeEditor.refresh()
+    preview-frame.refresh();
 
+    document.getElementById('file-input').addEventListener('change', function(e) {
+      var file = e.target.files[0];
+      var fileName = file.name;
+      document.getElementById('file-name').textContent = fileName;
+      
       if (file.type === 'application/pdf') {
-        reader.onload = (e) => {
-          const typedarray = new Uint8Array(e.target.result);
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var typedarray = new Uint8Array(e.target.result);
           processPDF(typedarray);
         };
         reader.readAsArrayBuffer(file);
       } else {
-        reader.onload = (e) => {
+        var reader = new FileReader();
+        reader.onload = function(e) {
           document.getElementById('user-content').value = e.target.result;
         };
         reader.readAsText(file);
       }
     });
 
-    async function processPDF(data) {
-      try {
-        const pdf = await pdfjsLib.getDocument(data).promise;
-        const pagesPromises = [];
+    function processPDF(data) {
+      pdfjsLib.getDocument(data).promise.then(function(pdf) {
+        var pagesPromises = [];
 
-        for (let i = 1; i <= pdf.numPages; i++) {
+        for (var i = 1; i <= pdf.numPages; i++) {
           pagesPromises.push(getPageText(pdf, i));
         }
 
-        const pagesText = await Promise.all(pagesPromises);
-        document.getElementById('user-content').value = pagesText.join(' ');
-      } catch (error) {
-        console.error('Error processing PDF:', error);
-      }
+        Promise.all(pagesPromises).then(function(pagesText) {
+          var text = pagesText.join(' ');
+          document.getElementById('user-content').value = text;
+        });
+      });
     }
 
-    async function getPageText(pdf, pageNum) {
-      const page = await pdf.getPage(pageNum);
-      const textContent = await page.getTextContent();
-      return textContent.items.map(item => item.str).join(' ');
+    function getPageText(pdf, pageNum) {
+      return pdf.getPage(pageNum).then(function(page) {
+        return page.getTextContent().then(function(textContent) {
+          return textContent.items.map(function(item) {
+            return item.str;
+          }).join(' ');
+        });
+      });
     }
 
-    document.getElementById('send-request').addEventListener('click', async () => {
-      const currentCode = codeEditor.getValue();
-      const userInput = document.getElementById('user-input').value;
-      const userContent = document.getElementById('user-content').value;
+    document.getElementById('send-request').addEventListener('click', function() {
+      var currentCode = codeEditor.getValue();
+      var userInput = document.getElementById('user-input').value;
+      var userContent = document.getElementById('user-content').value;
 
       if (userInput.trim() === '') {
         alert('Bitte gib eine Beschreibung oder Änderungsanweisung ein.');
         return;
       }
 
-      const systemMessage = "Du bist ein erfahrener Webentwickler, der HTML5, CSS und JavaScript beherrscht.";
-      let userMessage = '';
+      var systemMessage = "Du bist ein erfahrener Webentwickler, der HTML5, CSS und JavaScript beherrscht.";
+      var userMessage = '';
 
       if (currentCode.trim() === '') {
         userMessage = `Erstelle ausschließlich den vollständigen HTML5-Code für eine Web-App basierend auf folgender Beschreibung und Content:
@@ -532,7 +538,7 @@ Beschreibung: ${userInput}
 Content:
 ${userContent}
 
-Der Code sollte alle notwendigen HTML-, CSS- und JavaScript-Teile enthalten und als eine einzelne HTML-Datei ausführbar sein. Integriere den bereitgestellten Content sinnvoll in die Web-App.`;
+Der Code sollte alle notwendigen HTML-, CSS- und JavaScript-Teile enthalten und als eine einzelne HTML-Datei ausführbar sein. Integriere den bereitgestellten Content sinnvoll in die Web-App. Gib nur den Code zurück, ohne zusätzliche Erklärungen oder Kommentare. Verwende keine Formatierungen wie \`\`\`.`;
       } else {
         userMessage = `Passe den folgenden HTML5-Code basierend auf der unten stehenden Anforderung und dem bereitgestellten Content an.
 
@@ -546,11 +552,10 @@ ${userInput}
 Content:
 ${userContent}
 
-Gib ausschließlich den vollständigen, aktualisierten HTML5-Code zurück.`;
+Gib ausschließlich den vollständigen, aktualisierten HTML5-Code zurück, ohne zusätzliche Erklärungen oder Kommentare. Der Code sollte alle notwendigen HTML-, CSS- und JavaScript-Teile enthalten und als eine einzelne HTML-Datei ausführbar sein. Integriere den bereitgestellten Content sinnvoll in die Web-App. Verwende keine Formatierungen wie \`\`\`.`;
       }
 
-      try {
-        const response = await fetch(apiUrl, {
+      fetch(apiUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -564,88 +569,100 @@ Gib ausschließlich den vollständigen, aktualisierten HTML5-Code zurück.`;
             ],
             max_tokens: 2000,
             temperature: 0.7,
-            stop: ["<|eot_id|>","<|eom_id|>"]
+            stop: ["<|eot_id|>","<|eom_id|>"],
           })
-        });
-
-        const data = await response.json();
+      })
+      .then(response => response.json())
+      .then(data => {
         if (data.choices && data.choices.length > 0) {
-          let generatedCode = data.choices[0].message.content.trim();
+          var generatedCode = data.choices[0].message.content.trim();
           generatedCode = generatedCode.replace(/^```(?:html)?\s*/, '').replace(/```$/, '');
           codeEditor.setValue(generatedCode);
         } else {
           console.error('Unerwartete API-Antwort:', data);
           alert('Es gab ein Problem mit der API-Antwort. Bitte versuche es erneut.');
         }
-      } catch (error) {
+      })
+      .catch(error => {
         console.error('Fehler bei der API-Anfrage:', error);
         alert('Es gab einen Fehler bei der API-Anfrage. Bitte überprüfe deine Internetverbindung und den API-Schlüssel.');
+      });
+    });
+
+    document.getElementById('update-preview').addEventListener('click', function() {
+      var code = codeEditor.getValue();
+      var iframe = document.getElementById('preview-frame');
+      
+      try {
+        iframe.srcdoc = code;
+        iframe.onload = function() {
+          try {
+            iframe.contentWindow.eval('');
+          } catch (error) {
+            logToConsole('Error in preview: ' + error.message, true);
+          }
+        };
+      } catch (error) {
+        logToConsole('Error updating preview: ' + error.message, true);
       }
     });
 
-    document.getElementById('update-preview').addEventListener('click', () => {
-      const code = codeEditor.getValue();
-      const iframe = document.getElementById('preview-frame');
-      iframe.srcdoc = code;
-    });
-
-    document.getElementById('toggle-console').addEventListener('click', () => {
-      const consoleContainer = document.getElementById('console-container');
+    document.getElementById('toggle-console').addEventListener('click', function() {
+      var consoleContainer = document.getElementById('console-container');
       if (consoleContainer.style.display === 'none' || consoleContainer.style.display === '') {
         consoleContainer.style.display = 'block';
-        document.getElementById('toggle-console').textContent = 'Konsole ausblenden';
+        this.textContent = 'Konsole ausblenden';
       } else {
         consoleContainer.style.display = 'none';
-        document.getElementById('toggle-console').textContent = 'Konsole anzeigen';
+        this.textContent = 'Konsole anzeigen';
       }
     });
 
     function logToConsole(message, isError = false) {
-      const consoleOutput = document.getElementById('console-container');
-      const logEntry = document.createElement('div');
+      var consoleOutput = document.getElementById('console-container');
+      var logEntry = document.createElement('div');
       logEntry.textContent = message;
-      logEntry.style.color = isError ? '#ff6b6b' : '#ffffff';
+      if (isError) {
+        logEntry.style.color = '#ff6b6b';
+      }
       consoleOutput.appendChild(logEntry);
       consoleOutput.scrollTop = consoleOutput.scrollHeight;
     }
 
-    const toggleDarkModeBtn = document.getElementById('toggle-dark-mode');
-
-    toggleDarkModeBtn.addEventListener('click', () => {
+    document.getElementById('toggle-dark-mode').addEventListener('click', function() {
       document.body.classList.toggle('dark-mode');
-      toggleDarkModeBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️ Light Mode' : '🌙 Dark Mode';
       codeEditor.setOption('theme', document.body.classList.contains('dark-mode') ? 'material-darker' : 'default');
     });
 
-    document.getElementById('download-code').addEventListener('click', () => {
-      const code = codeEditor.getValue();
+    document.getElementById('download-code').addEventListener('click', function() {
+      var code = codeEditor.getValue();
       if (code.trim() === '') {
         alert('Es gibt keinen Code zum Herunterladen.');
         return;
       }
-      const blob = new Blob([code], { type: 'text/html' });
-      const link = document.createElement('a');
+      var blob = new Blob([code], { type: 'text/html' });
+      var link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
       link.download = 'webapp.html';
       link.click();
     });
 
-    document.getElementById('template-select').addEventListener('change', () => {
-      const selectedTemplate = document.getElementById('template-select').value;
+    document.getElementById('template-select').addEventListener('change', function() {
+      var selectedTemplate = this.value;
       if (templates[selectedTemplate]) {
         codeEditor.setValue(templates[selectedTemplate]);
         document.getElementById('preview-frame').srcdoc = templates[selectedTemplate];
       }
     });
 
-    document.getElementById('prompt-select').addEventListener('change', () => {
-      const selectedPromptKey = document.getElementById('prompt-select').value;
+    document.getElementById('prompt-select').addEventListener('change', function() {
+      var selectedPromptKey = this.value;
       if (predefinedPrompts[selectedPromptKey]) {
         document.getElementById('user-input').value = predefinedPrompts[selectedPromptKey];
       }
     });
 
-    const onboardingSteps = [
+     const onboardingSteps = [
       {
         title: "Beschreibung eingeben",
         content: "Gib eine Beschreibung oder Änderungsanweisung ein, um deine Web-App zu erstellen oder zu bearbeiten."
@@ -693,14 +710,14 @@ Gib ausschließlich den vollständigen, aktualisierten HTML5-Code zurück.`;
 
       document.querySelector('.close').onclick = function() {
         modal.style.display = 'none';
-      };
+      }
 
       prevBtn.onclick = function() {
         if (currentStep > 0) {
           currentStep--;
           updateOnboardingContent();
         }
-      };
+      }
 
       nextBtn.onclick = function() {
         if (currentStep < onboardingSteps.length - 1) {
@@ -710,7 +727,7 @@ Gib ausschließlich den vollständigen, aktualisierten HTML5-Code zurück.`;
           modal.style.display = 'none';
           currentStep = 0;
         }
-      };
+      }
     }
 
     function updateOnboardingContent() {
@@ -729,20 +746,20 @@ Gib ausschließlich den vollständigen, aktualisierten HTML5-Code zurück.`;
 
     window.onload = showOnboarding;
 
-    document.getElementById('toggle-code-editor').textContent = 'Code Editor anzeigen';
-    document.getElementById('toggle-code-editor').addEventListener('click', () => {
-      const codeEditorContainer = document.getElementById('code-editor-container');
+    document.getElementById('toggle-code-editor').textContent = 'Code Editor ausblenden';
+    document.getElementById('toggle-code-editor').addEventListener('click', function() {
+      var codeEditorContainer = document.getElementById('code-editor-container');
       if (codeEditorContainer.style.display === 'none') {
         codeEditorContainer.style.display = 'block';
-        document.getElementById('toggle-code-editor').textContent = 'Code Editor ausblenden';
+        this.textContent = 'Code Editor ausblenden';
       } else {
         codeEditorContainer.style.display = 'none';
-        document.getElementById('toggle-code-editor').textContent = 'Code Editor anzeigen';
+        this.textContent = 'Code Editor anzeigen';
       }
       codeEditor.refresh();
     });
 
-    document.getElementById('restart-onboarding').addEventListener('click', () => {
+    document.getElementById('restart-onboarding').addEventListener('click', function() {
       currentStep = 0;
       showOnboarding();
     });
